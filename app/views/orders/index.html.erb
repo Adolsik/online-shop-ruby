@@ -1,0 +1,22 @@
+
+<h1 class="is-size-2">Zamówienia</h1>
+<hr>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+      <p class="is-size-4">
+        <td>Zamówienie numer: <%= order.id %>,</td>
+        <td>złożone przez: <%= order.imie %> <%= order.nazwisko %>,</td>
+        <td>numer telefonu: <%= order.telefon %></td>
+      </p>
+        <td><%= link_to 'Pokaż zamówienie', order, class: "button is-info" %></td>
+        <td><%= link_to 'Usuń zamówienie', order, method: :delete, data: { confirm: 'Na pewno usunąć zamówienie?' }, class: "button is-danger" %></td>
+      </tr>
+      <hr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<script>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sklep - praktyki 2021</title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="<%= yield (:body_class) %>">
+    <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+    <div class="notification is-danger global-notification">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
+     <nav class="navbar is-link" role="navigation" aria-label="main navigation" style="background-color: #505050;">
+      <div class="navbar-brand">
+        <%= link_to root_path, class:"navbar-item" do %>
+          <h1 class="title is-5" style="color: white;">Sklep - praktyki 2021</h1>
+        <% end  %>
+      <div class="navbar-burger burger" data-target="navbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+
+            <% if total_cart_items %>
+              <%= link_to koszyk_path(@koszyk), class:"navbar-item button is-warning" do %>
+              <span class="icon is-small" >
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span> Koszyk
+                </span>
+              <% end %>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <div class="navbar-item has-dropdown is-hoverable" style="padding-left: 1vw; width:vw">
+                <%= link_to 'Konto', edit_user_registration_path, class: "navbar-link" %>
+                <div class="navbar-dropdown is-right" style="height: 4.5vw;">
+                  <%= link_to current_user.name, edit_user_registration_path, class:"navbar-item" %>
+                  <%= link_to "Wyloguj", destroy_user_session_path, method: :delete, class:"navbar-item" %>
+                </div>
+              </div>
+            <% else %>
+            <div style="padding-right: 0.2vw;padding-left: 0.2vw">
+            <%= link_to "Logowanie", new_user_session_path, class:"navbar-item button is-warning" %>
+            </div>
+            <%= link_to "Rejestracja", new_user_registration_path, class:"navbar-item button is-warning"%>
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </nav>
+
+  <%= yield(:header) %>
+
+  <div class="container">
+
+    <%= yield %>
+
+  </div>
+
+  </body>
+</html>

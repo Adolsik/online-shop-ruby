@@ -1,0 +1,21 @@
+<h1 class='is-size-1'>Zamówienie</h1>
+
+<ul class="steps is-narrow is-medium is-centered has-content-centered">
+      <li class="steps-segment">
+       
+      <li class="steps-segment">
+        <i class="has-text-dark">
+          <span class="steps-marker">
+            <span class="icon">
+              <i class="fa fa-user"></i>
+            </span>
+          </span>
+          <div class="steps-content">
+            <p class="heading">Dane klienta:</p>
+          </div>
+        </i>
+      
+
+<%= render 'form', order: @order %>
+
+<%= link_to 'Wróć do koszyka', koszyk_path(@koszyk.id) %>

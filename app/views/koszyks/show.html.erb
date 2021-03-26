@@ -1,0 +1,21 @@
+<div class="keep-shopping pv1 mt4 has-text-right">
+  <%= link_to 'Kontynuuj zakupy', przedmiots_path, class: 'button is-warning' %>
+  <%= %>
+</div>
+<hr />
+<section class="section">
+  <%= render(@koszyk.line_items) %>
+
+  <div class="columns">
+    <div class="column">
+      <%= button_to 'Wyczyść koszyk', @koszyk, method: :delete, data: { confirm: "Na pewno usunąć koszyk? " }, class: "button is-danger" %>
+    </div>
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <span class="f5 has-text-grey">Suma: </span> <%= number_to_currency(@koszyk.total_price,:unit => "zł ") %>
+      </h4>
+        <%= link_to 'Kontynuuj transakcję', new_order_path(totalPrice: @koszyk.total_price), class: "button is-info" %>
+     
+    </div>
+  </div>
+</section>

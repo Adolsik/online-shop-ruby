@@ -1,0 +1,33 @@
+
+<h1 class="is-size-2">Zamówienie zostanie wysłane na podane dane:</h1>
+<table class="table is-narrow">
+        <tr>
+          <td class="has-text-weight-bold">Imię:</td>
+          <td><%= @order.imie %></td>
+        </tr>
+          <tr>
+            <td class="has-text-weight-bold">Nazwisko:</td>
+            <td><%= @order.nazwisko %></td>
+          </tr>
+        <tr>
+          <td class="has-text-weight-bold">Miasto:</td>
+          <td><%= @order.miasto %></td>
+        </tr>
+        <tr>
+          <td class="has-text-weight-bold">Ulica:</td>
+          <td><%= @order.ulica %></td>
+        </tr>
+         <tr>
+          <td class="has-text-weight-bold">Kod pocztowy:</td>
+          <td><%= @order.kodpocztowy %></td>
+        </tr>
+         <tr>
+          <td class="has-text-weight-bold">Numer telefonu:</td>
+          <td><%= @order.telefon %></td>
+        </tr>
+      </table>
+       <%= link_to 'Wróć na stronę główną', root_path, class: "button is-info" %>
+    </div>
+    </div>
+
+

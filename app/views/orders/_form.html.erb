@@ -1,0 +1,44 @@
+
+
+
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+     <%= f.input :imie, label: 'Imię:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true %> 
+
+    <%= f.input :nazwisko,label: 'Nazwisko:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true %>
+    
+    <%= f.input :miasto,label: 'Miasto:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true %> 
+  
+    <%= f.input :ulica,label: 'Ulica:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true %> 
+    
+    <%= f.input :kodpocztowy,label: 'Kod pocztowy:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true%> 
+    
+    <%= f.input :telefon,label: 'Numer telefonu:', input_html: { class: "input"}, wrapper: false, label_html: { class: "label" }, required: true  %> 
+          
+    <div class="control">
+      <label class="label">Dostawa</label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :dostawa, collection: Order::DOSTAWA, prompt: "Wybierz formę dostawy", required: true %>
+            </span>
+            <span class="icon is-small is-left">
+              <i class="fa fa-truck"></i>
+            </span>
+            </div>
+    </div>
+    <div class="is-size-3">
+    <% total_price = params[:totalPrice] %>
+    <p>Do zapłaty: <%= total_price %> zł + dostawa </p>
+    </div>
+
+    <div>
+    
+    
+    </div>
+           
+  <div class="form-actions" style="padding-top: 1rem">
+    <%= f.button :submit, 'Zamów', class: 'button is-primary' %>
+  </div>
+<% end %>
