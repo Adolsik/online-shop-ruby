@@ -1,5 +1,4 @@
-Sklep stworzony w frameworku Ruby on Rails
-
+Shop made in "Ruby on Rails"
 
 
 
